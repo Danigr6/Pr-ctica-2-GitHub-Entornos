@@ -1,0 +1,15 @@
+# Archivos de configuración
+.metadata/
+.classpath
+.project
+.settings/
+
+# Directorios sin código fuente
+bin/
+
+# Archivos temporales
+*.log
+*.tmp
+*.swp
+*.bak
+*.cache
