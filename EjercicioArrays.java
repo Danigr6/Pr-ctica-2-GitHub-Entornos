@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
+
 public class EjercicioArrays {
 	 public static void main(String[] args) {
 	        int numAlumnos = 40;
@@ -12,11 +13,60 @@ public class EjercicioArrays {
 	        int indMaxNota, indMinNota;
 	        int postEval;
 	        double[] calif;
-	}
-    // Generar notas aleatorias
-    public static void generarNotasAleatorias(Integer[] notas) {
-        for (int i = 0; i < notas.length; i++) {
-            notas[i] = (int) (Math.random() * 11);
+	        
+	        generarNotasAleatorias(control);
+
+	        minNota = obtenerMinimo(control);
+	        maxNota = obtenerMaximo(control);
+	        indMinNota = obtenerIndiceNota(control, minNota) + 1; 
+	        indMaxNota = obtenerIndiceNota(control, maxNota) + 1;
+	        
+	        System.out.println("Mínimo es: " + minNota);
+	        System.out.println("Máximo es: " + maxNota);
+	        System.out.println("Indice del mínimo es: " + indMinNota);
+	        System.out.println("Indice del máximo es: " + indMaxNota);
+
+	        // Crear el array de prácticas y generar notas aleatorias
+	        practicas = new int[numAlumnos];
+	        generarNotasAleatorias(practicas);
+
+	        // Crear el array de calificaciones y calcularlas
+	        calificaciones = new float[numAlumnos];
+	        calcularCalificaciones(control, practicas, calificaciones);
+
+	        System.out.println("Calificaciones: " + Arrays.toString(calificaciones));
+
+	        // Crear el array de estadística
+	        estadistica = new float[10];
+	        calcularEstadistica(calificaciones, estadistica);
+
+	        // Crear los arrays de aprobados y suspensos
+	        aprobados = new int[numAlumnos];
+	        suspensos = new int[numAlumnos];
+	        
+	        calcularAprobadosYSuspensos(calificaciones, aprobados, suspensos);
+
+	        mostrarResumenAprobadosYSuspensos(aprobados, suspensos);
+
+	        calif = new double[40];
+	        for (int j = 0; j < 31; j++) {
+	            calif[j] = Math.random() * 10;
+	        }
+	        System.out.println("Nota antigua alumno nº4: " + calif[3]);
+	        calif[3] = 6; // Cambiar la calificación del alumno nº 4
+	        System.out.println("Nota nueva alumno nº4: " + calif[3]);
+	    }
+	
+    // Generar notas aleatorias recibiendo int[]
+    public static void generarNotasAleatorias(int[] practicas) {
+        for (int i = 0; i < practicas.length; i++) {
+            practicas[i] = (int) (Math.random() * 11);
+        }
+    }
+    // Generar notas aleatorias recibiendo Integer[]
+    public static void generarNotasAleatorias(Integer[] control) {
+        for (int i = 0; i < control.length; i++) {
+        	control[i] = (int) (Math.random() * 11);
         }
     }
 
